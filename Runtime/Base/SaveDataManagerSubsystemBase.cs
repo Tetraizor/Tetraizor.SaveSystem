@@ -177,6 +177,10 @@ namespace Tetraizor.Systems.Save.Base
             _saveSystem = (SaveSystem)system;
 
             _serializer = _saveSystem.Serializer;
+            if (_serializer == null)
+            {
+                DebugBus.LogError("Could not find any Serializer loaded, might be the subsystem loading order is incorrect, or no serializer subsystems were specified!");
+            }
 
             yield return null;
         }

@@ -1,0 +1,20 @@
+{
+  "name": "com.tetraizor.savesystem",
+  "displayName": "Save System",
+  "version": "1.0.0",
+  "author": {
+    "name": "Umuthan Ozel",
+    "email": "ozelumuthan@gmail.com",
+    "url": "https://umuthanozel.com"
+  },
+  "description": "A modular Save system that manages data gotten from the source and also reads/writes to it.",
+  "dependencies": {
+    "com.tetraizor.monosingleton": "https://github.com/Tetraizor/Tetraizor.MonoSingleton.git",
+    "com.tetraizor.debugutils": "https://github.com/Tetraizor/Tetraizor.DebugUtils.git",
+    "com.tetraizor.bootstrap": "https://github.com/Tetraizor/Tetraizor.Bootstrap.git"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tetraizor/Tetraizor.SaveSystem.git"
+  }
+}
