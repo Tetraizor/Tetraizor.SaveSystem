@@ -156,8 +156,6 @@ namespace Tetraizor.Systems.Save.Base
 
             _data = (DataType)_serializer.ReadResult;
 
-            Debug.Log(_data);
-
             _isReading = false;
 
             DeserializationCompleted?.Invoke();
@@ -182,8 +180,21 @@ namespace Tetraizor.Systems.Save.Base
                 DebugBus.LogError("Could not find any Serializer loaded, might be the subsystem loading order is incorrect, or no serializer subsystems were specified!");
             }
 
-            yield return null;
+            yield return LoadDataAsync();
+
+            if (Data == null)
+            {
+                yield return CreateInitialSaveData();
+                yield return LoadDataAsync();
+
+                if (Data == null)
+                {
+                    DebugBus.LogError("Could not get data even with the creation of an initial save data.");
+                }
+            }
         }
+
+        protected abstract IEnumerator CreateInitialSaveData();
 
         #endregion
     }
