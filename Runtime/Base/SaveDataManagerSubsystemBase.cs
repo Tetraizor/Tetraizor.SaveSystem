@@ -77,6 +77,17 @@ namespace Tetraizor.Systems.Save.Base
 
         #region Save/Load Methods
 
+        /// <summary>
+        /// Saves the current <i>"Data"</i> property of the ManagerSubsystem. 
+        /// </summary>
+        public virtual IEnumerator SaveDataAsync()
+        {
+            yield return SaveDataAsync(_data);
+        }
+
+        /// <summary>
+        /// Overrides the current <i>"Data"</i> property of the ManagerSubsystem, and saves it.
+        /// </summary>
         public virtual IEnumerator SaveDataAsync(ISaveData saveData)
         {
             SerializationStarted?.Invoke();
