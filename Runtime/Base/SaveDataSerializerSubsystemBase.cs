@@ -25,5 +25,13 @@ namespace Tetraizor.Systems.Save.Base
         public abstract IEnumerator LoadSubsystem(IPersistentSystem system);
 
         public abstract string GetSystemName();
+
+        public void CleanSerializer()
+        {
+            _isReading = false;
+            _isWriting = false;
+            _readResult = null;
+            _progress = 0;
+        }
     }
 }

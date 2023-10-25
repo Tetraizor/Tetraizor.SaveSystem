@@ -127,6 +127,7 @@ namespace Tetraizor.Systems.Save.Base
 
             _isWriting = false;
 
+            _serializer.CleanSerializer();
             SerializationCompleted?.Invoke();
         }
 
@@ -169,6 +170,7 @@ namespace Tetraizor.Systems.Save.Base
 
             _isReading = false;
 
+            _serializer.CleanSerializer();
             DeserializationCompleted?.Invoke();
         }
 
