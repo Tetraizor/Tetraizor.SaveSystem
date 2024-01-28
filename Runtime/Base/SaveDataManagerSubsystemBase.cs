@@ -19,7 +19,7 @@ namespace Tetraizor.Systems.Save.Base
             {
                 if (_instance == null)
                 {
-                    _instance = FindObjectOfType<ManagerType>();
+                    _instance = FindFirstObjectByType<ManagerType>();
                 }
 
                 return _instance;
@@ -28,6 +28,11 @@ namespace Tetraizor.Systems.Save.Base
         protected static ManagerType _instance;
 
         #endregion
+
+        public void SetSerializer(SaveDataSerializerBase serializer)
+        {
+            _serializer = serializer;
+        }
 
         #region Events
 
@@ -43,7 +48,9 @@ namespace Tetraizor.Systems.Save.Base
 
         // References
         protected SaveSystem _saveSystem;
-        protected SaveDataSerializerSubsystemBase _serializer;
+
+        protected SaveDataSerializerBase _serializer;
+        public SaveDataSerializerBase Serializer => _serializer;
 
         // Data Properties
         private string _savePath = null;
@@ -187,11 +194,10 @@ namespace Tetraizor.Systems.Save.Base
         {
             _saveSystem = (SaveSystem)system;
 
-            _serializer = _saveSystem.Serializer;
-            if (_serializer == null)
-            {
+            if (gameObject.GetComponentInChildren<SaveDataSerializerBase>() is SaveDataSerializerBase serializer)
+                _serializer = serializer;
+            else
                 DebugBus.LogError("Could not find any Serializer loaded, might be the subsystem loading order is incorrect, or no serializer subsystems were specified!");
-            }
 
             yield return LoadDataAsync();
 
