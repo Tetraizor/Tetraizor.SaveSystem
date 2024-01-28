@@ -1,6 +1,4 @@
 using System.Collections;
-using Tetraizor.Bootstrap.Base;
-using Tetraizor.Systems.Save.Base;
 using UnityEngine;
 
 namespace Tetraizor.Systems.Save.Base
@@ -26,10 +24,6 @@ namespace Tetraizor.Systems.Save.Base
 
         public abstract IEnumerator SerializeData<T>(ISaveData saveData, string path) where T : ISaveData;
         public abstract IEnumerator DeserializeData<T>(string path) where T : ISaveData;
-
-        public abstract IEnumerator LoadSubsystem(IPersistentSystem system);
-
-        public abstract string GetSystemName();
 
         public void CleanSerializer()
         {
