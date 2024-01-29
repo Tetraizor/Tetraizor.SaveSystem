@@ -13,10 +13,10 @@ namespace Tetraizor.Systems.Save.Coroutines
         public float Progress => _progress;
         private float _progress = 0;
 
-        private SaveDataSerializerBase _serializer;
+        private SaveDataSerializerSubsystemBase _serializer;
         private string _path;
 
-        public ReadDataCoroutine(SaveDataSerializerBase serializer, string path)
+        public ReadDataCoroutine(SaveDataSerializerSubsystemBase serializer, string path)
         {
             _serializer = serializer;
             _path = path;

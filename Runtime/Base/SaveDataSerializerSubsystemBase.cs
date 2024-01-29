@@ -1,9 +1,10 @@
 using System.Collections;
+using Tetraizor.Bootstrap.Base;
 using UnityEngine;
 
 namespace Tetraizor.Systems.Save.Base
 {
-    public abstract class SaveDataSerializerBase : MonoBehaviour
+    public abstract class SaveDataSerializerSubsystemBase : MonoBehaviour, IPersistentSubsystem
     {
         protected static int _serializerCount = 0;
 
@@ -32,5 +33,9 @@ namespace Tetraizor.Systems.Save.Base
             _readResult = null;
             _progress = 0;
         }
+
+        public abstract IEnumerator LoadSubsystem(IPersistentSystem system);
+
+        public abstract string GetSystemName();
     }
 }

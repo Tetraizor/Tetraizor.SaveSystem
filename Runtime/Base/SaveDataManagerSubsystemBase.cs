@@ -29,7 +29,7 @@ namespace Tetraizor.Systems.Save.Base
 
         #endregion
 
-        public void SetSerializer(SaveDataSerializerBase serializer)
+        public void SetSerializer(SaveDataSerializerSubsystemBase serializer)
         {
             _serializer = serializer;
         }
@@ -49,8 +49,8 @@ namespace Tetraizor.Systems.Save.Base
         // References
         protected SaveSystem _saveSystem;
 
-        protected SaveDataSerializerBase _serializer;
-        public SaveDataSerializerBase Serializer => _serializer;
+        protected SaveDataSerializerSubsystemBase _serializer;
+        public SaveDataSerializerSubsystemBase Serializer => _serializer;
 
         // Data Properties
         private string _savePath = null;
@@ -194,7 +194,7 @@ namespace Tetraizor.Systems.Save.Base
         {
             _saveSystem = (SaveSystem)system;
 
-            if (gameObject.GetComponentInChildren<SaveDataSerializerBase>() is SaveDataSerializerBase serializer)
+            if (gameObject.GetComponentInChildren<SaveDataSerializerSubsystemBase>() is SaveDataSerializerSubsystemBase serializer)
                 _serializer = serializer;
             else
                 DebugBus.LogError("Could not find any Serializer loaded, might be the subsystem loading order is incorrect, or no serializer subsystems were specified!");
